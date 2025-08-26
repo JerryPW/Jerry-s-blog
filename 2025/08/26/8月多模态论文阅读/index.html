@@ -1,0 +1,787 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>8月多模态论文阅读 | Jerry</title><meta name="author" content="Jerry"><meta name="copyright" content="Jerry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="9月份开始的博士生涯，博主将要从事于多模态大模型的相关工作。鉴于本人对此领域知识极度匮乏，故在8月份恶补相关技术与论文，并记录相关论文笔记于博客中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8月多模态论文阅读">
+<meta property="og:url" content="https://jerrypw.github.io/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
+<meta property="og:site_name" content="Jerry">
+<meta property="og:description" content="9月份开始的博士生涯，博主将要从事于多模态大模型的相关工作。鉴于本人对此领域知识极度匮乏，故在8月份恶补相关技术与论文，并记录相关论文笔记于博客中。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jerrypw.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-08-26T09:38:59.000Z">
+<meta property="article:modified_time" content="2025-08-26T13:01:22.283Z">
+<meta property="article:author" content="Jerry">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jerrypw.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "8月多模态论文阅读",
+  "url": "https://jerrypw.github.io/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/",
+  "image": "https://jerrypw.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-08-26T09:38:59.000Z",
+  "dateModified": "2025-08-26T13:01:22.283Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jerry",
+      "url": "https://jerrypw.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/Jerry-s-blog/img/favicon.png"><link rel="canonical" href="https://jerrypw.github.io/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Jerry-s-blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/Jerry-s-blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '8月多模态论文阅读',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/Jerry-s-blog/"><span class="site-name">Jerry</span></a><a class="nav-page-title" href="/Jerry-s-blog/"><span class="site-name">8月多模态论文阅读</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">8月多模态论文阅读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-08-26T09:38:59.000Z" title="Created 2025-08-26 17:38:59">2025-08-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-08-26T13:01:22.283Z" title="Updated 2025-08-26 21:01:22">2025-08-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><span id="more"></span>
+
+<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a><a target="_blank" rel="noopener" href="https://learn.deeplearning.ai/courses/attention-in-transformers-concepts-and-code-in-pytorch/lesson/han2t/introduction">Attention</a></h2><p>手撕Transformer代码：</p>
+<p><a target="_blank" rel="noopener" href="https://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a></p>
+<h3 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h3><p><strong>Basic Equation：$Attention(Q,K,V) &#x3D; SoftMax(\frac{QK^T}{\sqrt{d_k}})V$</strong></p>
+<p>Self-Attention多用于Transformer-encoder架构中，可以将文本，图片，音频等不同模态均转换为特征空间的向量表示。</p>
+<p>假设经过前期的encoding，初始向量$f$大小为$N\times L$，query, key, value矩阵分别为$M_Q, M_K, M_V$，大小为$L \times L$</p>
+<ul>
+<li>$Q &#x3D; f \times M_Q (N\times L)$， $K &#x3D; f \times M_K (N\times L)$，$V &#x3D; f \times M_V (N\times L)$</li>
+<li>$QK^T$是大小为$N \times N$的矩阵，表征不同object之间的similarity（例如在文本模态中，N所在的维度通常表示word）</li>
+<li>$d_K$为经过key矩阵之后，特征向量的维度，qkv矩阵的大小并不一定总为$L \times L$，输出维度可根据需要进行改变</li>
+<li>SoftMax将归一化每一行query similarity的概率，即最后输出的$N \times N$矩阵代表有多少概率相关</li>
+<li>最终输出大小仍旧为$N \times L$，代表利用QK所算出来的percentage重新分配Value的注意力分数</li>
+</ul>
+<h3 id="Masked-Self-Attention"><a href="#Masked-Self-Attention" class="headerlink" title="Masked Self-Attention"></a>Masked Self-Attention</h3><p><strong>Basic Equation：$Attention(Q,K,V,M) &#x3D; SoftMax(\frac{QK^T}{\sqrt{d_k}} + M)V$</strong></p>
+<p>在Transfomer-decoder中，通常为了完成生成任务，在训练时候不需要模型看到后续的输出，利用mask使其只关注当前以及之前的token，进而计算注意力分数</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_17.10.27.png" alt="截屏2025-07-24 17.10.27.png"></p>
+<h3 id="Cross-Attention"><a href="#Cross-Attention" class="headerlink" title="Cross-Attention"></a>Cross-Attention</h3><p>通常存在于Encoder-Docoder Attention中，通过利用Encoder中的V，K，与Decoder中的Q进行注意力机制的运算。在多模态中，Encoder可以是图像模态，Decoder输入为文本模态，可以做到将图片的信息融合进文本中。</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_17.17.37.png" alt="截屏2025-07-24 17.17.37.png"></p>
+<h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a><a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Transformer</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_19.16.46.png" alt="截屏2025-07-24 19.16.46.png"></p>
+<h2 id="VIT"><a href="#VIT" class="headerlink" title="VIT"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2010.11929/1000">VIT</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_22.30.56.png" alt="截屏2025-07-24 22.30.56.png"></p>
+<p>将图片分割成16*16的patch，对每一个patch输入到一个线性投影层中得到特征向量，直接将其输入到Transformer-encoder中，实现较好的视觉领域大规模预训练结果。</p>
+<h2 id="PPO算法"><a href="#PPO算法" class="headerlink" title="PPO算法"></a>PPO算法</h2><p><a href="PPO%E7%AE%97%E6%B3%95.pdf">PPO算法.pdf</a></p>
+<h3 id="前置知识-1"><a href="#前置知识-1" class="headerlink" title="前置知识"></a>前置知识</h3><p>具体PPO算法可以参考上述文档，此处只给出必要的公式：</p>
+<p>PPO Loss &#x3D; $-\frac{1}{N}\sum_{n &#x3D; 1}^{N}A_{\theta^{‘}}^{GAE}(s_t^n, a_t^n)\frac{p_{\theta}(a_t^n | s_t^n)}{p_{\theta^{‘}}(a_t^n | s_t^n)} + \beta KL(p_{\theta}, p_{\theta^{‘}})$</p>
+<p>其中，$A_{\theta}^{GAE}(s_t, a) &#x3D; \sum_{i &#x3D; 0}^{\infty}(\gamma \lambda)^i \delta_{t+i}^{V}$，$\delta_t^V &#x3D; r_t + \gamma V_{\theta}(s_{t+1}) - V_{\theta}(s_t)$</p>
+<p>在LLM训练中，状态$s$为至今为止所输入的所有token，而动作$a$为LLM输出的next token</p>
+<h3 id="PPO-in-LLM"><a href="#PPO-in-LLM" class="headerlink" title="PPO in LLM"></a>PPO in LLM</h3><ul>
+<li><p>四个模型：</p>
+<ul>
+<li>Reference LLM：进行重要性采样的大模型，一般将经过预训练+SFT微调之后，但还未进行RL post training的LLM当作Reference LLM</li>
+<li>Active LLM：为主要训练模型</li>
+<li>Reward LLM：输出层为1，为LLM的回复进行打分</li>
+<li>State-Value LLM：输出层为1，对LLM回复的任意state输出其value</li>
+<li>注：为了保证memory efficient，除去Reference LLM为整个LLM以外，其余模型只需要加载其lora参数即可。其中，Active LLM和State-Value共用一套lora。</li>
+</ul>
+</li>
+<li><p>reward模型训练：</p>
+<ul>
+<li>输出一个分数，表征对LLM回复质量的评分</li>
+<li>训练方式：对于一个问题，给出一好一坏两个回答，训练loss为$-logsigmoid(chosen - rejected)$</li>
+</ul>
+</li>
+<li><p>Reward for each token：由于reward模型只对完整输出进行打分，而在PPO算法中，每一个state均需要有一个reward，工程上通过计算reference model和active model在输出层中概率分布的KL散度，定义$-0.2 \times KL + reward$为每一个state的奖励。其中$reward &#x3D; (0, 0, …, r)$，只有最终输出才有reward模型计算的分数</p>
+</li>
+<li><p>State-Value label：$V_{label}(s_t) &#x3D; A_t^{GAE} + V(s_t)$</p>
+</li>
+<li><p>重要性采样：</p>
+<p>  <img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-08_03.20.48.png" alt="截屏2025-08-08 03.20.48.png"></p>
+</li>
+</ul>
+<h1 id="MLLM-Pretrain"><a href="#MLLM-Pretrain" class="headerlink" title="MLLM-Pretrain"></a>MLLM-Pretrain</h1><h2 id="CLIP"><a href="#CLIP" class="headerlink" title="CLIP"></a><a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v139/radford21a/radford21a.pdf">CLIP</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_12.08.43.png" alt="截屏2025-07-24 12.08.43.png"></p>
+<p>通过海量的弱监督文本对通过对比学习，将图片和文本通过各自的预训练模型获得的编码向量在向量空间上对齐。 </p>
+<p>特点：多模态融合部分采用最简单的点积方式，运算速度快，适用于图文检索，但对于视觉推理，视觉问答等下游任务表现不足。</p>
+<h2 id="ViLT"><a href="#ViLT" class="headerlink" title="ViLT"></a><a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v139/kim21k/kim21k.pdf">ViLT</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_13.53.23.png" alt="截屏2025-07-26 13.53.23.png"></p>
+<p>先前论文在提取视觉特征时，均将Visual Embed层做的非常大，ViLT认为这增大了运算负担以及时间开销，所以他们提出(d)中结构，在文本与视觉特征提取时，均用轻量级extractor，但在模态融合时，运用足够大的transformer encoder</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_14.03.14.png" alt="截屏2025-07-26 14.03.14.png"></p>
+<ul>
+<li>文本与图片的特征预提取：<ul>
+<li>文本：word embedding + position embedding</li>
+<li>图片：分割成patch之后，简单的linear projection + position embedding</li>
+<li>文本与图片均各有一个[CLS]特征向量，其中文本的[CLS]具有全局特征信息</li>
+</ul>
+</li>
+<li>Transformer Encoder的初始权重来自于pre-trained ViT而非BERT（在多模态融合中，预先存储视觉信息往往会比预先存储文本信息，训练效果更好）</li>
+<li>训练约束<ul>
+<li>ITM (Image Text Matching)：二分类任务，从文本的[CLS]向量中外接一个FC分类头，用来判断当前图片-文本对是否匹配</li>
+<li>MLM (Masked Language Modeling)：训练方法来自于<a target="_blank" rel="noopener" href="https://aclanthology.org/N19-1423.pdf">BERT</a>：在训练中，随机选15%的token，替换为[MASK]，在经过transformer融合后，将该位置的向量外接一个MLP，用来预测被[MASK]的词是什么。为了保证下游任务不会因为没有[MASK]而造成pre-train阶段的过拟合，在15%被选中的token中：<ul>
+<li>有80%概率沿用[MASK]</li>
+<li>10%概率替换为随机token</li>
+<li>10%概率不做任何替换，保留原token</li>
+</ul>
+</li>
+<li>小技巧：<ul>
+<li>Whole Word Masking：避免mask token为单词一小部分，模型学习时候可以通过前后词根进行分析，从而没有利用图片信息。因此，每一次需要mask掉整个单词。</li>
+<li>Image Augmentation：RandAugment</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ALBEF"><a href="#ALBEF" class="headerlink" title="ALBEF"></a><a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2021/file/505259756244493872b7709a8a01b536-Paper.pdf">ALBEF</a></h2><ul>
+<li>Motivation：<ul>
+<li>现如今多模态大模型，均是经过text and vision encoder之后，直接进行模态融合，但是由于两个encoder本身并没有对齐，这样直接融合效率低</li>
+<li>现如今unlabel data噪声太大，图片文本pair仅具有weakly-correlated</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_15.30.27.png" alt="截屏2025-07-26 15.30.27.png"></p>
+<ul>
+<li>Solution：<ul>
+<li>ITC loss：在进入多模态融合之前，利用对比学习ITC先将多模态特征对齐。</li>
+<li>引入了Momentum Model，具体详见<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf">MoCo</a><ul>
+<li><p>MoCo对比学习伪代码：</p>
+<p>  <img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_16.47.09.png" alt="截屏2025-07-26 16.47.09.png"></p>
+</li>
+<li><p>有一份初始一模一样的模型，其担任teacher角色，为ITC，MLM提供伪标签，削弱unabel data中图片文本对weakly-correlated的问题</p>
+</li>
+<li><p>动量模型更新：$y_t &#x3D; my_{t-1} + (1 - m) x_t$</p>
+</li>
+</ul>
+</li>
+<li>Hard Negative Mining：在利用ITM的时候，为了给到更难的负样本从而提高模型的辨别能力，对于每一张图片，从mini-batch中采样1个在ITC中相似度最高的负样本进行学习（或者相似度越高，就越有更高的概率被采样）。每一条文本同理。</li>
+</ul>
+</li>
+</ul>
+<h2 id="VLMo-这个组的工作非常Solid"><a href="#VLMo-这个组的工作非常Solid" class="headerlink" title="VLMo (这个组的工作非常Solid)"></a><a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2022/file/d46662aa53e78a62afd980a29e0c37ed-Paper-Conference.pdf">VLMo</a> (这个组的工作非常Solid)</h2><ul>
+<li>Motivation：<ul>
+<li>CLIP-based的方法，利用点乘计算相似度，在检索任务中速度快，效率高。Fusion-based的方法，在视觉推理任务中表现好，但在检索任务中，由于每一次需要通过所有block，计算消耗量大。</li>
+<li>用更大的数据集训练导致更好的效果在多模态领域没有体现，原因在于没有大体量优质的数据集</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_17.01.18.png" alt="截屏2025-07-26 17.01.18.png"></p>
+<ul>
+<li>Solution：<ul>
+<li>MoE架构：每一个transformer block的FFN被分为三个前向函数，三个函数共享一个多头注意力层，依据不同模态走不同的FFN</li>
+<li>首先用大规模的视觉，文本数据集对V-FFN和L-FFN进行pretrain，最后再用多模态数据集对所有参数进行pretrain</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-26_17.14.17.png" alt="截屏2025-07-26 17.14.17.png"></p>
+<p>先预训练视觉部分，再冻住相关参数，只训练文本部分。在具有视觉信息的注意力层上训练L-FFN，会比(1)放开注意力层，(2)先文本预训练，再冻住注意力层，训练V-FFN，效果更好。与<a target="_blank" rel="noopener" href="https://www.notion.so/2384622b9b8e80b69817fa8a2798d9af?pvs=21">ViLT</a>的想法相似</p>
+<h2 id="BLIP-来自ALBEF团队）"><a href="#BLIP-来自ALBEF团队）" class="headerlink" title="BLIP(来自ALBEF团队）"></a><a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v162/li22n/li22n.pdf">BLIP</a>(来自ALBEF团队）</h2><ul>
+<li>Motivation：<ul>
+<li>目前存在单一使用encoder，但encoder无法做生成；但encoder-decoder方法，并不能很好应用检索任务</li>
+<li>训练数据集noisy很大，图文对不一定十分匹配 → Caption+Filter来清洗数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_12.39.09.png" alt="截屏2025-07-27 12.39.09.png"></p>
+<ul>
+<li>模型架构：<ul>
+<li>分别存在三个文本模型，左边两个为encoder，右边一个为decoder，颜色相同部分为共享参数</li>
+<li>ITC，ITM沿用ALBEF中的思路，LM是预测“下一个词”，而非预测“mask掉的词”</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_13.27.17.png" alt="截屏2025-07-27 13.27.17.png"></p>
+<ul>
+<li>数据清洗：<ul>
+<li>首先用有噪声的数据集预训练一个BLIP，再根据精心标注的数据集（CoCo），对三个模块进行微调。</li>
+<li>对有噪声数据集里面的图文对计算ITM，如果分数较低的话，就利用Captioner重新生成一个标注，从而提高数据集的关联度。</li>
+<li>利用清洗好的数据集重新训练</li>
+</ul>
+</li>
+</ul>
+<h2 id="BLIP2"><a href="#BLIP2" class="headerlink" title="BLIP2"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.01917">BLIP2</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_19.40.04.png" alt="截屏2025-07-28 19.40.04.png"></p>
+<ul>
+<li>Motivation：原始BLIP的训练参数太多了，不够lightweight</li>
+<li>Solution：利用一个Q-former充当已训练好的Image encoder和LLM之间的桥梁，将融合了图片信息的文本text feature输入给LLM做后续的下游工作（主要为VQA，Image Captioning，Image-Text Retrieval）</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_19.43.04.png" alt="截屏2025-07-28 19.43.04.png"></p>
+<ul>
+<li>Q-former训练：ITC，ITM，IGT，由于self-Attention共享参数，不同任务之间的mask要注意。本质上Q-former输出的是融合了图片以及文本的信息。但与后面的LLM的特征空间仍旧不一致。</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_19.45.28.png" alt="截屏2025-07-28 19.45.28.png"></p>
+<ul>
+<li>Q-former中给出的feature，已经融合了指令以及图片的信息。利用LLM的输出，将这个feature (1)对其到文本中，(2)符合groundtruth的输出</li>
+</ul>
+<h2 id="CoCa"><a href="#CoCa" class="headerlink" title="CoCa"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.01917">CoCa</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_13.48.25.png" alt="截屏2025-07-27 13.48.25.png"></p>
+<ul>
+<li>文本部分采用Decoder形式</li>
+<li>训练loss主要是ITC和LM</li>
+</ul>
+<h2 id="BEiT-v3-来自VLMo团队"><a href="#BEiT-v3-来自VLMo团队" class="headerlink" title="BEiT v3 (来自VLMo团队)"></a><a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_Image_as_a_Foreign_Language_BEiT_Pretraining_for_Vision_and_CVPR_2023_paper.pdf">BEiT v3</a> (来自VLMo团队)</h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_14.37.37.png" alt="截屏2025-07-27 14.37.37.png"></p>
+<p>整体架构延用VLMo提出的MoE思路，不同的是，为了降低模型前向forward的次数，BEiT v3放弃了ITC，ITM等其他loss，仅用了”mask-then-predict”方式：</p>
+<ul>
+<li><p>对于L-FFN，利用MLM</p>
+</li>
+<li><p>对于V-FFN，利用MIM</p>
+<ul>
+<li><p>具体MIM方法可参考<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.08254">BEiT</a>：</p>
+<p>  <img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_14.43.54.png" alt="截屏2025-07-27 14.43.54.png"></p>
+</li>
+</ul>
+</li>
+<li><p>对于VL-FFN，则融合使用MLM和MIM</p>
+</li>
+</ul>
+<p>作者指出，通过简单的pretrainng task，BEiT v3提高了模型scaling-up的能力，相比于CoCa 65k batchsize，CLIP 32k batchsize，BEiT v3仅需要6k batch size就能达到更好的效果。</p>
+<h1 id="Object-Detection-and-Segmentation"><a href="#Object-Detection-and-Segmentation" class="headerlink" title="Object Detection and Segmentation"></a>Object Detection and Segmentation</h1><h2 id="DETR"><a href="#DETR" class="headerlink" title="DETR"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.12872">DETR</a></h2><p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_17.42.21.png" alt="截屏2025-07-27 17.42.21.png"></p>
+<p>Transformer固定出100个框，利用二分图匹配，与GT比较，仅用与GT最相近的框进行loss计算，其余被归类为no object。解决了先前工作中同一个物体出多个框的问题。</p>
+<ul>
+<li><p>伪代码：</p>
+<p>  <img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_17.56.54.png" alt="截屏2025-07-27 17.56.54.png"></p>
+</li>
+</ul>
+<h2 id="CVPR-2024-DINOv：Visual-In-Context-Prompting"><a href="#CVPR-2024-DINOv：Visual-In-Context-Prompting" class="headerlink" title="[CVPR 2024] DINOv：Visual In-Context Prompting"></a>[CVPR 2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2311.13601">DINOv：Visual In-Context Prompting</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/UX-Decoder/DINOv">https://github.com/UX-Decoder/DINOv</a></p>
+<p>写作太烂了！！！！根本看不下去，建议作者回炉重新学习论文写作</p>
+<h3 id="新概念"><a href="#新概念" class="headerlink" title="新概念"></a>新概念</h3><ul>
+<li>In-context prompting：通过输入在LLM的上下文中直接给出提示，而非通过训练或微调。其中，few-shot，one-shot是in-context prompting的特殊方式。任何在输入上下文（文本&#x2F;视觉）中给的提示，包括指令、示例、标签、视觉线索等，均可以算做广义的in-context learning。</li>
+<li>Referring Segmentation（指代分割）：从图像中分割出用户指定的唯一目标<ul>
+<li>语言提示：the dog on the left</li>
+<li>视觉提示：在图像上点击、画框、涂鸦，明确指向哪个目标</li>
+</ul>
+</li>
+<li>Open-set Segmentation（开放集分割）：分割图像中所有符合语义的对象，包括训练时未出现过的新类别</li>
+<li>Motivation：<ul>
+<li>目前visual in-context learning仅将用户视觉提示与最相关的单个对象关联，在识别多个具有相同语义概念的对象方面能力有限。</li>
+<li>textual  prompting不适合于提供视觉的in-context指导</li>
+<li>之前的视觉 in-context 工作大多局限于指代分割，缺少一个能同时处理通用分割与指代分割的统一模型。</li>
+<li>DINOv支持generic以及referring分割，同时支持多样化的visual prompt输入</li>
+<li>希望做一个<strong>大一统</strong>的工作</li>
+</ul>
+</li>
+</ul>
+<h2 id="ECCV2024-PartGLEE-A-Foundation-Model-for-Recognizing-and-Parsing-Any-Objects"><a href="#ECCV2024-PartGLEE-A-Foundation-Model-for-Recognizing-and-Parsing-Any-Objects" class="headerlink" title="[ECCV2024] PartGLEE: A Foundation Model for Recognizing and Parsing Any Objects"></a>[ECCV2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2407.16696">PartGLEE: A Foundation Model for Recognizing and Parsing Any Objects</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/ProvenceStar/PartGLEE">https://github.com/ProvenceStar/PartGLEE</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_10.27.43.png" alt="截屏2025-07-24 10.27.43.png"></p>
+<p>PartGLEE旨在弥补现如今分割任务中，颗粒度不细致的问题。PartGLEE通过hierarchical方法，能够准确识别细粒度的物体分割任务。</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-24_10.31.48.png" alt="截屏2025-07-24 10.31.48.png"></p>
+<h3 id="解决细粒度的方法"><a href="#解决细粒度的方法" class="headerlink" title="解决细粒度的方法"></a>解决细粒度的方法</h3><ul>
+<li>粗筛：在Q-former中预先设计好L个Universal Parsing Queries，这些queries可能是所有object中所共有的一些局部特征。Object Decoder输出N个object的queries向量，每一个object均需要和L个universal parsing queries进行计算，最终得到N*L个局部特征queries。</li>
+<li>细筛：利用CLIP的text- encoder对有所类别（object和part）输出text feature，并与object queries和part queries进行相似度计算，后续通过约束进行训练。</li>
+</ul>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p>We utilize object-level datasets such as <strong>COCO [38], LVIS [16], Object365 [65], OpenImages [26], Visual Genome [25] and RefCOCO series [47,91]</strong>, etc, while using part-level datasets <strong>PACO [59], PartImageNet [18], Pascal Part [6], ADE20K-Part [75] and SA-1B [24]</strong> with varying annotation granularity for joint-training.</p>
+<p>在32张A100中进行大乱炖</p>
+<h2 id="24-1-Grounded-SAM-Assembling-Open-World-Models-for-Diverse-Visual-Tasks"><a href="#24-1-Grounded-SAM-Assembling-Open-World-Models-for-Diverse-Visual-Tasks" class="headerlink" title="[24.1] Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks"></a>[24.1] <a target="_blank" rel="noopener" href="http://xffarxiv.org/pdf/2401.14159">Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/Grounded-Segment-Anything?utm_source=catalyzex.com">GitHub - IDEA-Research&#x2F;Grounded-Segment-Anything: Grounded SAM: Marrying Grounding DINO with Segment Anything &amp; Stable Diffusion &amp; Recognize Anything - Automatically Detect , Segment and Generate Anything</a></p>
+<p>主要idea是利用G-DINO + SAM做下游任务</p>
+<ul>
+<li>SAM：对任意图像生成mask，但需要提供points，boxes，text当作prompt</li>
+<li>Grounding-DINO：open-set object detection模型，但需要text input，同时只能生成box</li>
+<li>OSX：全身网格恢复模型，从单目图像中估计人体SMPL。需要检测人体框，随后对这些人体框进行裁剪与缩放，最后对单人进行网格恢复处理。</li>
+<li>BLIP：用它的captioner，对图片生成description。但不能做object detecting或者segmenting</li>
+<li>RAM：图像标注模型，能够对输入图像中常见类别进行高精度识别和标注。但RAM 只能生成标签，无法为识别出的类别生成精确的边框和掩码。</li>
+<li>Diffusion：文字生成图片</li>
+<li>GPT：大语言模型</li>
+</ul>
+<p>两两结合做实际工程上任务</p>
+<h2 id="CVPR-2025-DINOv2-Meets-Text-A-Unified-Framework-for-Image-and-Pixel-Level-Vision-Language-Alignment"><a href="#CVPR-2025-DINOv2-Meets-Text-A-Unified-Framework-for-Image-and-Pixel-Level-Vision-Language-Alignment" class="headerlink" title="[CVPR 2025] DINOv2 Meets Text: A Unified Framework for Image- and Pixel-Level Vision-Language Alignment"></a>[CVPR 2025] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Jose_DINOv2_Meets_Text_A_Unified_Framework_for_Image-_and_Pixel-Level_CVPR_2025_paper.pdf"><strong>DINOv2 Meets Text: A Unified Framework for Image- and Pixel-Level Vision-Language Alignment</strong></a></h2><ul>
+<li>Motivation：<ul>
+<li>CLIP的训练方式很好，但它需要同时对文本，视觉编码器从头训练。</li>
+<li>固定一个模态的encoder，只对另外一个encoder进行对齐，理论上应该是可行的，但目前为止的试验结果是不理想的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_15.00.55.png" alt="截屏2025-07-28 15.00.55.png"></p>
+<ul>
+<li>Solution：<ul>
+<li>与其利用[CLS]代替整个图片的feature，利用average pooling，将所有patch的feature进行融合</li>
+</ul>
+</li>
+</ul>
+<h2 id="24-12-A-Light-Weight-Framework-for-Open-Set-Object-Detection-with-Decoupled-Feature-Alignment-in-Joint-Space"><a href="#24-12-A-Light-Weight-Framework-for-Open-Set-Object-Detection-with-Decoupled-Feature-Alignment-in-Joint-Space" class="headerlink" title="[24.12] A Light-Weight Framework for Open-Set Object Detection with Decoupled Feature Alignment in Joint Space"></a>[24.12] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2412.14680">A Light-Weight Framework for Open-Set Object Detection with Decoupled Feature Alignment in Joint Space</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/D-Robotics-AI-Lab/DOSOD">GitHub - D-Robotics-AI-Lab&#x2F;DOSOD: A Light-Weight Framework for Open-Set Object Detection with Decoupled Feature Alignment in Joint Space</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_15.51.40.png" alt="截屏2025-07-28 15.51.40.png"></p>
+<h2 id="24-10-SAM-2-Segment-Anything-in-Images-and-Videos"><a href="#24-10-SAM-2-Segment-Anything-in-Images-and-Videos" class="headerlink" title="[24.10] SAM 2: Segment Anything in Images and Videos"></a>[24.10] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2408.00714">SAM 2: Segment Anything in Images and Videos</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/sam2">https://github.com/facebookresearch/sam2</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-31_16.44.02.png" alt="截屏2025-07-31 16.44.02.png"></p>
+<h2 id="CVPR-2024-PixelLM-Pixel-Reasoning-with-Large-Multimodal-Model"><a href="#CVPR-2024-PixelLM-Pixel-Reasoning-with-Large-Multimodal-Model" class="headerlink" title="[CVPR 2024] PixelLM: Pixel Reasoning with Large Multimodal Model"></a>[CVPR 2024] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Ren_PixelLM_Pixel_Reasoning_with_Large_Multimodal_Model_CVPR_2024_paper.pdf">PixelLM: Pixel Reasoning with Large Multimodal Model</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/MaverickRen/PixelLM">https://github.com/MaverickRen/PixelLM</a></p>
+<ul>
+<li>PixelLM功能：依据图片以及文本提示，对图片进行segmentation，同时可以输出文本进行图片理解</li>
+<li>Contribution:<ul>
+<li>pixel-level mask</li>
+<li>multiple open -world target</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-02_14.10.24.png" alt="截屏2025-08-02 14.10.24.png"></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-02_14.12.18.png" alt="截屏2025-08-02 14.12.18.png"></p>
+<ul>
+<li>Contribution：<ul>
+<li>Seg codebook：多尺度，多token，蕴含目标mask信息的feature</li>
+<li>Light-weight Decoder：将codebook feature以及image feature转化为mask</li>
+</ul>
+</li>
+</ul>
+<h2 id="CVPR-2024-OMG-LLaVA-Bridging-Image-level-Object-level-Pixel-level-Reasoning-and-Understanding"><a href="#CVPR-2024-OMG-LLaVA-Bridging-Image-level-Object-level-Pixel-level-Reasoning-and-Understanding" class="headerlink" title="[CVPR 2024] OMG-LLaVA: Bridging Image-level, Object-level, Pixel-level Reasoning and Understanding"></a>[CVPR 2024] <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/83eb86be3e2f9fd66c44d9073c51ba4d-Paper-Conference.pdf"><strong>OMG-LLaVA: Bridging Image-level, Object-level, Pixel-level Reasoning and Understanding</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/lxtGH/OMG-Seg">https://github.com/lxtGH/OMG-Seg</a></p>
+<ul>
+<li>Motivation：做一个unified model来同时handle image-level (such as image caption and image-based conversation), object-level (such as region caption and visual prompt-based conversation), and pixel-level (such as universal segmentation, referring segmentation, reasoning segmentation, and grounded conversation generation)</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-02_16.07.06.png" alt="截屏2025-08-02 16.07.06.png"></p>
+<h2 id="2025-06-Seg-Zero-Reasoning-Chain-Guided-Segmentation-via-Cognitive-Reinforcement"><a href="#2025-06-Seg-Zero-Reasoning-Chain-Guided-Segmentation-via-Cognitive-Reinforcement" class="headerlink" title="[2025.06] Seg-Zero: Reasoning-Chain Guided Segmentation via Cognitive Reinforcement"></a>[2025.06] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2503.06520">Seg-Zero: Reasoning-Chain Guided Segmentation via Cognitive Reinforcement</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/dvlab-research/Seg-Zero">https://github.com/dvlab-research/Seg-Zero</a></p>
+<ul>
+<li>Motivation: out-of-domain generalization</li>
+<li>Task: Reasoning Segmentation(i.e. 提供描述性文字，模型输出相应图片描述，以及对应对象的semantic mask)</li>
+<li>摒弃<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Lai_LISA_Reasoning_Segmentation_via_Large_Language_Model_CVPR_2024_paper.pdf">LISA</a>提出的<SEG>字段</SEG></li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_11.57.49.png" alt="截屏2025-08-12 11.57.49.png"></p>
+<ul>
+<li>架构：<ul>
+<li>MLLM采用Qwen2.5-VL，输入图片以及文本，输出CoT回复+bounding box和可以描述对象的点P1，P2</li>
+<li>将box和P1，P2当作visual prompt输入到Mask Decoder（SAM2）中，生成相应的semantic mask</li>
+</ul>
+</li>
+</ul>
+<p>亮点1: GRPO训练方法</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_12.00.27.png" alt="截屏2025-08-12 12.00.27.png"></p>
+<p>亮点2: CoT from zero（并没有构建具有CoT回复的label，在prompt中引导MLLM进行CoT回复）整体训练完全为RL训练</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_12.01.30.png" alt="截屏2025-08-12 12.01.30.png"></p>
+<h2 id="2025-04-Pixel-SAIL-Single-Transformer-For-Pixel-Grounded-Understanding"><a href="#2025-04-Pixel-SAIL-Single-Transformer-For-Pixel-Grounded-Understanding" class="headerlink" title="[2025.04] Pixel-SAIL: Single Transformer For Pixel-Grounded Understanding"></a>[2025.04] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2504.10465">Pixel-SAIL: Single Transformer For Pixel-Grounded Understanding</a></h2><p>暂无代码（2025.8.12）</p>
+<ul>
+<li>Motivation：用一个Transformer模型去完成Referring Segmentation以及Referring Expression任务</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_13.11.20.png" alt="截屏2025-08-12 13.11.20.png"></p>
+<ul>
+<li>Contribution：<ul>
+<li>Learnable Up-sampling Module：假设图片经过Transformer输出的大小为$\mathcal{V} \in \mathbb{R}^{N \times C}$，将其调整为image feature $\mathcal{F} \in \mathbb{R}^{\frac{H}{S} \times \frac{W}{S} \times C}$ ，通过<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2203.16527">here</a>的方法将其up sampling为$\mathbb{R}^{\frac{H}{4} \times \frac{W}{4} \times C}$ ，并与Transformer中的predicted segmentation token，shape为$\mathcal{Q} \in \mathbb{R}^{K \times C}$ 进行矩阵相乘，得到segmentation mask $\mathcal{M}\in \mathbb{R}^{K \times\frac{H}{4} \times \frac{W}{4}}$</li>
+<li>Visual Prompt Injection: 没看懂…，大体上给出一种在Referring Expression任务中对visual prompt的parameter free的encoding 方法</li>
+<li>Dense Feature Distillation：利用Mask2Former对upsampled mask features，SAM2对low-resolution feature $\mathcal{F_l} \in \mathbb{R}^{\frac{H}{S} \times \frac{W}{S} \times C}$ 进行蒸馏学习</li>
+</ul>
+</li>
+</ul>
+<h2 id="2025-06-Perceive-Anything-Recognize-Explain-Caption-and-Segment-Anything-in-Images-and-Videos"><a href="#2025-06-Perceive-Anything-Recognize-Explain-Caption-and-Segment-Anything-in-Images-and-Videos" class="headerlink" title="[2025.06] Perceive Anything: Recognize, Explain, Caption, and Segment Anything in Images and Videos"></a>[2025.06] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2506.05302">Perceive Anything: Recognize, Explain, Caption, and Segment Anything in Images and Videos</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/Perceive-Anything/PAM">https://github.com/Perceive-Anything/PAM</a></p>
+<p>文章在intro部分详细对visual prompt编码的方式进行了总结，后期可以考虑深入阅读</p>
+<ul>
+<li><p>Motivation：</p>
+<pre><code> 先前工作呈现出以下局限性
+</code></pre>
+</li>
+<li><p>仅生成有限的语义输出——往往只是类别标签或简短的描述</p>
+</li>
+<li><p>聚焦于单一视觉模态（图像或视频）</p>
+</li>
+<li><p>依赖外部分割模型来提供掩mask，这种串行设计增加了计算开销，并使整体性能对mask质量敏感</p>
+</li>
+<li><p>Multi-Task Fulfillment：</p>
+<p>  在给定一张图片以及visual prompt之后，PAM可以</p>
+<ul>
+<li><strong>分割（Segment）</strong>：为图像或整个视频中指定的区域生成精确的分割掩码。</li>
+<li><strong>识别（Recognize）</strong>：识别指定区域或目标的类别。</li>
+<li><strong>解释（Explain）</strong>：在给定上下文中，对该区域或目标的定义、属性及功能进行清晰解释。</li>
+<li><strong>描述（Caption）</strong>：为图像、视频及视频流中的该区域生成简洁或详细的文字描述</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_14.41.03.png" alt="截屏2025-08-12 14.41.03.png"></p>
+<p>通过利用SAM2的丰富语义信息，通过Semantic Perceiver充当桥梁，将SAM2的语义信息传递到LLM中，进行后续任务的生成</p>
+<h1 id="Grounding-MLLM"><a href="#Grounding-MLLM" class="headerlink" title="Grounding-MLLM"></a>Grounding-MLLM</h1><h2 id="23-07-KOSMOS-2-Grounding-Multimodel-Large-Language-Models-to-the-World"><a href="#23-07-KOSMOS-2-Grounding-Multimodel-Large-Language-Models-to-the-World" class="headerlink" title="[23.07] KOSMOS-2: Grounding Multimodel Large Language Models to the World"></a>[23.07] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2306.14824">KOSMOS-2: Grounding Multimodel Large Language Models to the World</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/unilm/blob/master/kosmos-2/README.md">https://github.com/microsoft/unilm/blob/master/kosmos-2/README.md</a></p>
+<ul>
+<li><p>卖点：具备感知目标描述（如边界框）以及将文本锚定到视觉世界的新能力 →</p>
+<p>  人话：可以通过box或者语言描述让MLLM理解图片中的物体位置信息；同时MLLM可以根据语言描述&#x2F;box框选定位图片中对应的object，并以此做出回答</p>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/715d6eca-3989-45db-8603-590bc3840614.png" alt="截屏2025-07-29 13.33.30.png"></p>
+<ul>
+<li><p>Contribution 1：<a target="_blank" rel="noopener" href="https://huggingface.co/datasets/zzliang/GRIT">GRIT Dataset</a></p>
+<p>  GRIT数据集的生成与LLaVa的instruction生成类似，均是使用成熟工具将已有数据集加工成符合任务需求的版本。</p>
+<p>  spaCy进行名词提取 + GLIP出框 + spaCy进行名词扩展</p>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-29_13.54.04.png" alt="截屏2025-07-29 13.54.04.png"></p>
+<ul>
+<li>Contribution 2：KOSMOS-2<ul>
+<li>Grounded Input</li>
+<li>Transformer-based causal language model + the next-token prediction task</li>
+</ul>
+</li>
+</ul>
+<h2 id="24-04-Ferret-v2-An-Improved-Baseline-for-Referring-and-Grounding-with-Large-Language-Models"><a href="#24-04-Ferret-v2-An-Improved-Baseline-for-Referring-and-Grounding-with-Large-Language-Models" class="headerlink" title="[24.04] Ferret-v2: An Improved Baseline for Referring and Grounding with Large Language Models"></a>[24.04] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2404.07973"><strong>Ferret-v2: An Improved Baseline for Referring and Grounding with Large Language Models</strong></a></h2><ul>
+<li>Motivation：<ul>
+<li>现如今vision encoder只能对固定分辨率图片进行编码，且分辨率太小</li>
+<li>对于细粒度的referring和grounding问题表现不佳</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-29_22.20.40.png" alt="截屏2025-07-29 22.20.40.png"></p>
+<ul>
+<li>Solution：<ul>
+<li>两个vision encoder，CLIP encode global images，DINOv2 encode local split patches.</li>
+<li>将任意分辨率图片打成patch，分批送入DINOv2中</li>
+<li>Ferret-2也有一个GRIT数据集</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-29_22.32.22.png" alt="截屏2025-07-29 22.32.22.png"></p>
+<ul>
+<li>Training：<ul>
+<li>阶段1：只训练将CLIP投影到LLM维度的project层</li>
+<li>阶段2：DINOv2的project层与CLIP的共享初始参数，通过Dense referring and detection训练除去encoder和LLM的所有参数</li>
+<li>阶段3：用全部数据训练所有参数，同时用LLaVa的数据集做指令微调</li>
+</ul>
+</li>
+</ul>
+<h2 id="ECCV-2024-Groma-Localized-Visual-Tokenization-for-Grounding-Multimodal-Large-Language-Models"><a href="#ECCV-2024-Groma-Localized-Visual-Tokenization-for-Grounding-Multimodal-Large-Language-Models" class="headerlink" title="[ECCV 2024] Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models"></a>[ECCV 2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2404.13013"><strong>Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models</strong></a></h2><p><a target="_blank" rel="noopener" href="https://groma-mllm.github.io/">Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-29_23.41.29.png" alt="截屏2025-07-29 23.41.29.png"></p>
+<ul>
+<li><p>架构：</p>
+<ul>
+<li><p>Image Encoder：DINOv2</p>
+</li>
+<li><p>Region Proposer：DDETR，承接DINOv2的feature，给出图片的object detection box</p>
+</li>
+<li><p>Region Encoder：将image feature和detection box编码成region feature</p>
+<p>  feature与box一一对应</p>
+</li>
+</ul>
+</li>
+<li><p>训练：</p>
+<ul>
+<li>先训练DDETR的目标检测能力，imgae encoder参数冻住</li>
+<li>vision，region，language对齐，只训练MLP projector和region encoder，其余参数冻住</li>
+<li>指令微调：自己的grounding数据集 + LLaVa + ShareGPT-4V</li>
+</ul>
+</li>
+</ul>
+<h2 id="NIPS-2024-SimVG-A-Simple-Framework-for-Visual-Grounding-with-Decoupled-Multi-modal-Fusion"><a href="#NIPS-2024-SimVG-A-Simple-Framework-for-Visual-Grounding-with-Decoupled-Multi-modal-Fusion" class="headerlink" title="[NIPS 2024] SimVG: A Simple Framework for Visual Grounding with Decoupled Multi-modal Fusion"></a>[NIPS 2024] <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/dc6319dde4fb182b22fb902da9418566-Paper-Conference.pdf">SimVG: A Simple Framework for Visual Grounding with Decoupled Multi-modal Fusion</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/Dmmm1997/SimVG">https://github.com/Dmmm1997/SimVG</a></p>
+<ul>
+<li>Motivation：现如今所有做Visual Grounding任务的模型，在进行模态融合之前，均需要单独对各个模态进行encoding。而模态融合仅依赖少量下游任务数据集，低估了模态间相互理解的难度。</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-31_11.12.03.png" alt="截屏2025-07-31 11.12.03.png"></p>
+<ul>
+<li>Solution：<ul>
+<li>利用BEiT-3的架构充当Encoder，实现多模态的融合</li>
+<li>Decoder部分采用DETR架构 → 文字引导的DETR出框工作</li>
+<li>多了一个object token，用来做最后的box和classification部分。objection token的训练逐渐由ground truth引导到DETR decoder引导</li>
+</ul>
+</li>
+<li>缺陷：似乎只能做出框？不能像上述的一些任务，做自然语言的交互</li>
+</ul>
+<h2 id="ICLR-2025-MLLMs-Know-Where-to-Look-Training-free-Perception-of-Small-Visual-Details-with-Multimodal-LLMs"><a href="#ICLR-2025-MLLMs-Know-Where-to-Look-Training-free-Perception-of-Small-Visual-Details-with-Multimodal-LLMs" class="headerlink" title="[ICLR 2025] MLLMs Know Where to Look: Training-free Perception of Small Visual Details with Multimodal LLMs"></a>[ICLR 2025] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2502.17422">MLLMs Know Where to Look: Training-free Perception of Small Visual Details with Multimodal LLMs</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/saccharomycetes/mllms_know">https://github.com/saccharomycetes/mllms_know</a></p>
+<ul>
+<li>Motivation Example：当图片尺寸逐渐缩小到文本关注的范围时，MLLM正确作答的概率大大增加</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-31_13.17.42.png" alt="截屏2025-07-31 13.17.42.png"></p>
+<ul>
+<li>Solution：实际上注意力机制反映了，当图片与文本align的时候，注意力分数较高，可以通过注意力分数引导图片的crop，然后引导LLM得到更准确的答案</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-31_14.45.55.png" alt="截屏2025-07-31 14.45.55.png"></p>
+<h2 id="ICCV-2025-GroundingSuite-Measuring-Complex-Multi-Granular-Pixel-Grounding"><a href="#ICCV-2025-GroundingSuite-Measuring-Complex-Multi-Granular-Pixel-Grounding" class="headerlink" title="[ICCV 2025] GroundingSuite: Measuring Complex Multi-Granular Pixel Grounding"></a>[ICCV 2025] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2503.10596"><strong>GroundingSuite: Measuring Complex Multi-Granular Pixel Grounding</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/hustvl/GroundingSuite">https://github.com/hustvl/GroundingSuite</a></p>
+<ul>
+<li>Benchmark工作，贡献包含：<ul>
+<li>利用VLM agent进行自动标注</li>
+<li>a large-scale training dataset encompassing 9.56 million pairs</li>
+<li>evaluation benchmark consisting of 3,800 images.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-31_15.57.09.png" alt="截屏2025-07-31 15.57.09.png"></p>
+<h2 id="CVPR-2025-LLMDet-Learning-Strong-Open-Vocabulary-Object-Detectors-under-the-Supervision-of-Large-Language-Models"><a href="#CVPR-2025-LLMDet-Learning-Strong-Open-Vocabulary-Object-Detectors-under-the-Supervision-of-Large-Language-Models" class="headerlink" title="[CVPR 2025] LLMDet: Learning Strong Open-Vocabulary Object Detectors under the Supervision of Large Language Models"></a>[CVPR 2025] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Fu_LLMDet_Learning_Strong_Open-Vocabulary_Object_Detectors_under_the_Supervision_of_CVPR_2025_paper.pdf">LLMDet: Learning Strong Open-Vocabulary Object Detectors under the Supervision of Large Language Models</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/iSEE-Laboratory/LLMDet">https://github.com/iSEE-Laboratory/LLMDet</a></p>
+<p>通过利用大语言模型同时生成<strong>图像级的详细描述</strong>和<strong>区域级的粗粒度定位短语</strong>，检测器能够从详细描述中获取更多信息和对图像更全面的理解，并构建出丰富的视觉-语言表示。</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-13_17.41.32.png" alt="截屏2025-08-13 17.41.32.png"></p>
+<p>Feature Map输入到LLM中，训练LLM输出详细的image-level caption</p>
+<p>object query输入到LLM，训练LLM输出与之对应的region-level caption</p>
+<p>这样训练的Detector，可以有更丰富的语义信息，从而在open- vocabulary detection中有更好的结果</p>
+<h2 id="CVPR-2025-ROD-MLLM-Towards-More-Reliable-Object-Detection-in-Multimodal-Large-Language-Models"><a href="#CVPR-2025-ROD-MLLM-Towards-More-Reliable-Object-Detection-in-Multimodal-Large-Language-Models" class="headerlink" title="[CVPR 2025] ROD-MLLM: Towards More Reliable Object Detection in Multimodal Large Language Models"></a>[CVPR 2025] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_ROD-MLLM_Towards_More_Reliable_Object_Detection_in_Multimodal_Large_Language_CVPR_2025_paper.pdf">ROD-MLLM: Towards More Reliable Object Detection in Multimodal Large Language Models</a></h2><p>2025.8.24 代码未开源</p>
+<ul>
+<li>Motivation：现如今LLM，在面对referring以及grounding问题时，如果指代的目标没有出现在图片中，LLM并不会告知目标不存在，而是错误的给出不可信的目标框</li>
+</ul>
+<p>但论文中的方法部分似乎并没有很详细的介绍其模型架构是如何思考相关指代语句是否存在于图片中，更多的是在训练数据集中引入了相关的训练数据</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-24_13.51.39.png" alt="截屏2025-08-24 13.51.39.png"></p>
+<p>模型在输出框的时候并非输出坐标，而是利用Low-Level Locator预先对图片中的物体进行open vocabulary detection给出粗糙的框，然后在LLM输出这些框的标号，类似于ChetRex</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf">ROI Align</a><ul>
+<li>输入为图片坐标系下的box坐标</li>
+<li>将图片坐标系转换为特征图坐标系</li>
+<li>将特征图坐标下的box划分为8*8的网格</li>
+<li>每一个网格采样，在特征图的feature下做双线性插值，得到region feature $\in \mathbb{R}^{8 \times 8 \times D}$</li>
+</ul>
+</li>
+</ul>
+<h1 id="Visual-Prompt"><a href="#Visual-Prompt" class="headerlink" title="Visual Prompt"></a>Visual Prompt</h1><h2 id="NIPS-2023-Fine-Grained-Visual-Prompting"><a href="#NIPS-2023-Fine-Grained-Visual-Prompting" class="headerlink" title="[NIPS 2023] Fine-Grained Visual Prompting"></a>[NIPS 2023] <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/4e9fa6e716940a7cfc60c46e6f702f52-Paper-Conference.pdf">Fine-Grained Visual Prompting</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/ylingfeng/FGVP">https://github.com/ylingfeng/FGVP</a></p>
+<p>作者给出了不同于以往的coarse mask的处理方式，而是更细致的给出VLM需要关注的区域，从而提高任务的准确性</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_12.45.36.png" alt="截屏2025-08-03 12.45.36.png"></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_12.46.54.png" alt="截屏2025-08-03 12.46.54.png"></p>
+<p>利用SAM可以给出更准确的semantic mask，再通过color，contour，grayscale，blur等后处理技术，得到下游任务需要的visual prompt</p>
+<h2 id="ECCV-2024-GPT4RoI-Instruction-Tuning-Large-Language-Model-on-Region-of-Interest"><a href="#ECCV-2024-GPT4RoI-Instruction-Tuning-Large-Language-Model-on-Region-of-Interest" class="headerlink" title="[ECCV 2024] GPT4RoI: Instruction Tuning Large Language Model on Region-of-Interest"></a>[ECCV 2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2307.03601"><strong>GPT4RoI: Instruction Tuning Large Language Model on Region-of-Interest</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/jshilong/GPT4RoI">https://github.com/jshilong/GPT4RoI</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_13.23.01.png" alt="截屏2025-08-03 13.23.01.png"></p>
+<p>利用RoIAlign将RoI进行编码输入到LLM中，通过训练使得LLM可以理解Region，并对相关region-text pairs进行理解</p>
+<ul>
+<li>Training：<ul>
+<li>pre-training：将region extractor对其到LLM，只训练region extractor参数</li>
+<li>End-to-end fine-tuning：MLM</li>
+</ul>
+</li>
+</ul>
+<h2 id="CVPR-2024-ViP-LLaVA-Making-Large-Multimodal-Models-Understand-Arbitrary-Visual-Prompts"><a href="#CVPR-2024-ViP-LLaVA-Making-Large-Multimodal-Models-Understand-Arbitrary-Visual-Prompts" class="headerlink" title="[CVPR 2024] ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts"></a>[CVPR 2024] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Cai_ViP-LLaVA_Making_Large_Multimodal_Models_Understand_Arbitrary_Visual_Prompts_CVPR_2024_paper.pdf"><strong>ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/WisconsinAIVision/ViP-LLaVA">https://github.com/WisconsinAIVision/ViP-LLaVA</a></p>
+<p>能够解码任意的视觉提示。这使得用户可以通过诸如“红色边框”或“箭头指示”等自然直观的方式来标记图像并与模型交互。</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_14.17.47.png" alt="截屏2025-08-03 14.17.47.png"></p>
+<p>直接将visual prompt通过alpha blending融合进原始图片中，通过vision encoder输出img feature训练LLM。其中vision encoder输出的feature融合了CLIP多层次的输出，以求获得各种尺度下的图像细节。</p>
+<p>自主构建了visual prompting的数据集，涵盖矩形、椭圆、点、三角形、掩码、掩码轮廓、箭头、涂鸦8种视觉提示</p>
+<h2 id="CVPR-2024-Osprey-Pixel-Understanding-with-Visual-Instruction-Tuning"><a href="#CVPR-2024-Osprey-Pixel-Understanding-with-Visual-Instruction-Tuning" class="headerlink" title="[CVPR 2024] Osprey: Pixel Understanding with Visual Instruction Tuning"></a>[CVPR 2024] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.pdf"><strong>Osprey: Pixel Understanding with Visual Instruction Tuning</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/CircleRadon/Osprey">https://github.com/CircleRadon/Osprey</a></p>
+<p>先前工作均用coarse box作为visual prompt做region understanding，但这样粒度的提示还是太过粗糙，不能理解pixel-level的信息。Osprey模型可以理解pixel-level的semantic mask，进而引导LLM进行更细粒度的图片理解</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_14.49.18.png" alt="截屏2025-08-03 14.49.18.png"></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_14.50.41.png" alt="截屏2025-08-03 14.50.41.png"></p>
+<ul>
+<li>架构：<ul>
+<li>Vision Encoder：CNN-based CLIP encoder，可以规避transformer因为高分辨率引入的计算负担</li>
+<li>Mask-Aware Visual Extractor：将CLIP中提取的多尺度特征，通过mask进行mask pooling</li>
+<li>spatial token：将mask调整为224*224，flatten之后project为spatial token</li>
+</ul>
+</li>
+<li>训练：<ul>
+<li>Image-Text Alignment</li>
+<li>Mask-Text Alignment</li>
+<li>End-to-End Fine-tuning</li>
+</ul>
+</li>
+</ul>
+<h2 id="NIPS-2024-Visual-CoT-Advancing-Multi-Modal-Language-Models-with-a-Comprehensive-Dataset-and-Benchmark-for-Chain-of-Thought-Reasoning"><a href="#NIPS-2024-Visual-CoT-Advancing-Multi-Modal-Language-Models-with-a-Comprehensive-Dataset-and-Benchmark-for-Chain-of-Thought-Reasoning" class="headerlink" title="[NIPS 2024] Visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning"></a>[NIPS 2024] <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/0ff38d72a2e0aa6dbe42de83a17b2223-Paper-Datasets_and_Benchmarks_Track.pdf">Visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning</a></h2><p>large-scale Visual CoT dataset: </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/deepcs233/Visual-CoT">https://github.com/deepcs233/Visual-CoT</a></p>
+<h2 id="NIPS-2024-VisionLLM-v2-A-Generalist-Multimodal-Large-Language-Model-for-Hundeds-of-Vision-Language-Tasks"><a href="#NIPS-2024-VisionLLM-v2-A-Generalist-Multimodal-Large-Language-Model-for-Hundeds-of-Vision-Language-Tasks" class="headerlink" title="[NIPS 2024] VisionLLM v2: A Generalist Multimodal Large Language Model for Hundeds of Vision-Language Tasks"></a>[NIPS 2024] <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/81a60d18e010b27b36cd465c6604b915-Paper-Conference.pdf">VisionLLM v2: A Generalist Multimodal Large Language Model for Hundeds of Vision-Language Tasks</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/OpenGVLab/VisionLLM">https://github.com/OpenGVLab/VisionLLM</a></p>
+<ul>
+<li>Contribution:<ul>
+<li>大一统模型：除了传统的文字生成以外，现在做detection，segmentation，pose estimation，image generation，image editing等上百种下游任务</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-02_16.51.56.png" alt="截屏2025-08-02 16.51.56.png"></p>
+<ul>
+<li>Method：<ul>
+<li>想法相对简单，将所有需要用到的信息编码上token，通过让LLM输出特定的routing token([DET], [POSE], [SEG], [GEN], [EDIT])，将这些token在LLM输出层的feature接入下游任务的decoder，完成相应下游任务。</li>
+<li>routing token在输入层中有一系列可学习的token，在自回归训练中，如果输出层输出的是routing token，那么相应的可学习token则会被提取并输入到输入层中</li>
+</ul>
+</li>
+<li>Training：<ul>
+<li>LLaVa pre-training method：image，region，vision alignment and instruction tuning</li>
+<li>Multi-task joint training</li>
+<li>Decoder-only Fine-tuning</li>
+</ul>
+</li>
+</ul>
+<h2 id="25-02-Introducing-Visual-Perception-Token-into-Multimodal-Large-Language-Model"><a href="#25-02-Introducing-Visual-Perception-Token-into-Multimodal-Large-Language-Model" class="headerlink" title="[25.02] Introducing Visual Perception Token into Multimodal Large Language Model"></a>[25.02] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2502.17425"><strong>Introducing Visual Perception Token into Multimodal Large Language Model</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/yu-rp/VisualPerceptionToken">https://github.com/yu-rp/VisualPerceptionToken</a></p>
+<ul>
+<li>Motivation：MLLM无法自主的决定图片观察的侧重</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-02_18.10.48.png" alt="截屏2025-08-02 18.10.48.png"></p>
+<ul>
+<li>Solution：提出两个额外的token：<ul>
+<li>Region Selection Token：将图片进行裁剪之后append到输入层</li>
+<li>Vision Re-encoding Token：将图片用另外一个encoder进行处理</li>
+</ul>
+</li>
+<li>本质上为CoT</li>
+</ul>
+<h2 id="25-02-Draw-and-Understand-Leveraging-Visual-Prompts-to-Enable-MLLMs-to-Comprehend-What-You-Want"><a href="#25-02-Draw-and-Understand-Leveraging-Visual-Prompts-to-Enable-MLLMs-to-Comprehend-What-You-Want" class="headerlink" title="[25.02] Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want"></a>[25.02] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2403.20271"><strong>Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want</strong></a></h2><p>主要贡献为数据集：a multi-domain dataset featuring 1.2 million image-visual prompttext triplets, including natural images, document images, scene text images, mobile&#x2F;web<br>screenshots, and remote sensing images.</p>
+<p><a target="_blank" rel="noopener" href="https://draw-and-understand.github.io/">Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want</a></p>
+<h2 id="25-03-ChatRex-Taming-Multimodal-LLM-for-Joint-Perception-and-Understanding"><a href="#25-03-ChatRex-Taming-Multimodal-LLM-for-Joint-Perception-and-Understanding" class="headerlink" title="[25.03] ChatRex: Taming Multimodal LLM for Joint Perception and Understanding"></a>[25.03] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2411.18363">ChatRex: Taming Multimodal LLM for Joint Perception and Understanding</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/ChatRex">https://github.com/IDEA-Research/ChatRex</a></p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-03_18.20.23.png" alt="截屏2025-08-03 18.20.23.png"></p>
+<p>与其让LLM输出box的位置，不如提前训练一个object detector预先出框，再将框编码为object feature喂给LLM，让LLM依据图片以及文本信息，输出需要参考的object序号，这样可以直接通过序号查找到detector中已经检测到的对应object</p>
+<h2 id="ICCV-2025-Referring-to-Any-Person"><a href="#ICCV-2025-Referring-to-Any-Person" class="headerlink" title="[ICCV 2025] Referring to Any Person"></a>[ICCV 2025] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2503.08507">Referring to Any Person</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/RexSeek">https://github.com/IDEA-Research/RexSeek</a></p>
+<p>通过文本引导，在图片中给出相对应的人物bounding box。整体框架构建于ChetRex</p>
+<p>提供了一个基于人物box的数据集：HumanRef</p>
+<h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><h2 id="CVPR-2025-Task-Preference-Optimization-Improving-Multimodal-Large-Language-Models-with-Vision-Task-Alignment"><a href="#CVPR-2025-Task-Preference-Optimization-Improving-Multimodal-Large-Language-Models-with-Vision-Task-Alignment" class="headerlink" title="[CVPR 2025] Task Preference Optimization: Improving Multimodal Large Language Models with Vision Task Alignment"></a>[CVPR 2025] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Yan_Task_Preference_Optimization_Improving_Multimodal_Large_Language_Models_with_Vision_CVPR_2025_paper.pdf"><strong>Task Preference Optimization: Improving Multimodal Large Language Models with Vision Task Alignment</strong></a></h2><p><a target="_blank" rel="noopener" href="https://github.com/OpenGVLab/TPO?utm_source=catalyzex.com">GitHub - OpenGVLab&#x2F;TPO: Task Preference Optimization: Improving Multimodal Large Language Models with Vision Task Alignment</a></p>
+<ul>
+<li>Motivation：<ul>
+<li>现如今MLLM在fine-grained or precise understanding上表现不佳</li>
+<li>需要将MLLM的回复Align with Human</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_16.50.19.png" alt="截屏2025-07-28 16.50.19.png"></p>
+<p>我目前为止没太看懂TPO是个什么玩意，暂且把它认为是“大力出奇迹”的方法。本质上我认为和“多阶段多任务联合微调”没有什么区别。但我不懂为什么加入了“玄乎其玄“的任务token $v_i$，以及任务头$H_i$。同时，我也不理解为什么这样的训练方法就可以使MLLM可以关注到fine-grained的信息，我更倾向于的原因是其在特殊任务上进行了特殊的训练，但这个偏工程做法，并不觉得是一个创新点。</p>
+<h2 id="25-02-ALIGNVLM-Bridging-Vision-and-Language-Latent-Spaces-for-Multimodal-Understanding"><a href="#25-02-ALIGNVLM-Bridging-Vision-and-Language-Latent-Spaces-for-Multimodal-Understanding" class="headerlink" title="[25.02] ALIGNVLM: Bridging Vision and Language Latent Spaces for Multimodal Understanding"></a>[25.02] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2502.01341">ALIGNVLM: Bridging Vision and Language Latent Spaces for Multimodal Understanding</a></h2><p>提出了一种新的多模态融合的方法</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-28_18.47.01.png" alt="截屏2025-07-28 18.47.01.png"></p>
+<h2 id="ECCV-2024-Attention-Prompting-on-Image-for-Large-Vision-Language-Models"><a href="#ECCV-2024-Attention-Prompting-on-Image-for-Large-Vision-Language-Models" class="headerlink" title="[ECCV 2024] Attention Prompting on Image for Large Vision-Language Models"></a>[ECCV 2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2409.17143">Attention Prompting on Image for Large Vision-Language Models</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/yu-rp/apiprompting">https://github.com/yu-rp/apiprompting</a></p>
+<p>本文通过对Visual Propmt叠加注意力图，可以有效改善LVLM在VQA中的表现。</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-23_20.57.12.png" alt="截屏2025-07-23 20.57.12.png"></p>
+<h2 id="ECCV2024-FALIP-Visual-Prompt-as-Foveal-Attention-Boosts-CLIP-Zero-Shot-Performance"><a href="#ECCV2024-FALIP-Visual-Prompt-as-Foveal-Attention-Boosts-CLIP-Zero-Shot-Performance" class="headerlink" title="[ECCV2024] FALIP: Visual Prompt as Foveal Attention Boosts CLIP Zero-Shot Performance"></a>[ECCV2024] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2407.05578">FALIP: Visual Prompt as Foveal Attention Boosts CLIP Zero-Shot Performance</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/pumpkin805/FALIP">GitHub - pumpkin805&#x2F;FALIP: [ECCV2024]FALIP: Visual Prompt as Foveal Attention Boosts CLIP Zero-Shot Performance</a></p>
+<ul>
+<li><p>Motivation：</p>
+<p>  现有工作通常通过在图像上圈选或添加边界框等显式标注，引导 CLIP 聚焦于用户指定的区域。然而，这类方法不可避免地修改了原始图像，使输入到 CLIP 的内容不再完整。</p>
+</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-07-27_15.46.04.png" alt="截屏2025-07-27 15.46.04.png"></p>
+<ul>
+<li>Solution：通过预先标注边界框，并在 self-attention 中对对应的 patch 生成引导性掩码，从而在模型内部引导 CLIP 聚焦于标注区域。</li>
+</ul>
+<h2 id="2025-06-Revisit-What-You-See-Disclose-Language-Prior-in-Vision-Tokens-for-Efficient-Guided-Decoding-of-LVLMs"><a href="#2025-06-Revisit-What-You-See-Disclose-Language-Prior-in-Vision-Tokens-for-Efficient-Guided-Decoding-of-LVLMs" class="headerlink" title="[2025.06] Revisit What You See: Disclose Language Prior in Vision Tokens for Efficient Guided Decoding of LVLMs"></a>[2025.06] <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2506.09522">Revisit What You See: Disclose Language Prior in Vision Tokens for Efficient Guided Decoding of LVLMs</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/bscho333/ReVisiT">https://github.com/bscho333/ReVisiT</a></p>
+<p>Motivation: 在VQA以及image captioning任务中，LLM回复的text没有完全利用visual information → vision token在经过LLM之后会保存一定的语义信息</p>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-12_15.02.09.png" alt="截屏2025-08-12 15.02.09.png"></p>
+<p>利用vision token在LLM output中的语义信息，与当前输出token的vocab分布进行重新分布，按照重新分布进行vocab输出</p>
+<h2 id="CVPR-2025-LLaVA-ST-A-Multimodal-Large-Language-Model-for-Fine-Grained-Spatial-Temporal-Understanding"><a href="#CVPR-2025-LLaVA-ST-A-Multimodal-Large-Language-Model-for-Fine-Grained-Spatial-Temporal-Understanding" class="headerlink" title="[CVPR 2025] LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding"></a>[CVPR 2025] <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Li_LLaVA-ST_A_Multimodal_Large_Language_Model_for_Fine-Grained_Spatial-Temporal_Understanding_CVPR_2025_paper.pdf">LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/appletea233/LLaVA-ST">https://github.com/appletea233/LLaVA-ST</a></p>
+<ul>
+<li>Target：视频理解 → effectively handle both temporal and spatial localization</li>
+</ul>
+<p><img src="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%88%AA%E5%B1%8F2025-08-13_15.44.23.png" alt="截屏2025-08-13 15.44.23.png"></p>
+<ul>
+<li>Contribution:<ul>
+<li>Language-Aligned Positional Embedding：将视频每一帧的每一个位置插入与其语义一致的embedding<ul>
+<li>选定$M_t$个关键帧，并将图片在长宽上进行$M_w, M_h$的均分，以获得在时空中的special token：$\langle t\langle \tau \rangle, \langle w\langle \omega \rangle, \langle h\langle \eta \rangle$<br>  ，其对应的input text embeddings为$p_\tau, p_\omega, p_\eta \in \mathbb{R}^D$</li>
+<li>取pre-train LLM最后一层的矩阵 $W_o \in \mathbb{R}^{(V + M_w + M_h + M_t) \times D}$，设 $\hat{p_\tau}, \hat{p_\omega}, \hat{p_\eta} \in \mathbb{R}^D$ 为 $W_o$ 对应special token的行</li>
+<li>则对应的position embeddings为 $\rho (\omega, \eta, \tau) &#x3D; \frac{1}{2}(\hat{p_\tau}+ \hat{p_\omega}+ \hat{p_\eta} + p_\tau+ p_\omega+ p_\eta)$，则 $\rho \in \mathbb{R}^{M_w \times M_h \times M_t \times D}$</li>
+<li>假设经过ViT的video feature大小为$N \times H_1 \times W_1 \times D$，则对$\rho$进行linear interpolation将其转换到image feature合适的大小</li>
+</ul>
+</li>
+<li>Spatial-Temporal Packer：获取视频的时空feature<ul>
+<li>经过embedding，feature $F$ 的大小为$N\times H_1 \times W_1 \times D$，将其reshape为$(k_1 \times k_1 \times N)\times (\frac{W_1}{k_1}\times \frac{H_1}{k_1}) \times D$，对每一个patch经过average pooling，得到$F^{‘} \in \mathbb{R}^{k_1 \times k_1 \times N \times 1 \times D}$。$F$与$F^{‘}$进行pixel-region attention得到$\hat{F} \in \mathbb{R}^{k_1 \times k_1 \times N \times D}$</li>
+<li>用同样的方法对$\hat{F}$进行$k_2 \times k_2$下采样，得到$\hat{F_s} \in \mathbb{R}^{k_2 \times k_2 \times N \times D}$</li>
+<li>将$\hat{F}$ reshape为$k_1 \times k_1 \times \sigma \times (\frac{N}{\sigma} \times D)$，做同样的操作得到$\hat{F_t} \in \mathbb{R}^{k_1 \times k_1 \times \sigma \times D}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://jerrypw.github.io">Jerry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://jerrypw.github.io/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">https://jerrypw.github.io/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/Jerry-s-blog/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/Jerry-s-blog/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/Jerry-s-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Jerry</div><div class="author-info-description"></div><div class="site-data"><a href="/Jerry-s-blog/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/Jerry-s-blog/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/Jerry-s-blog/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Attention"><span class="toc-number">1.1.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Self-Attention"><span class="toc-number">1.1.1.</span> <span class="toc-text">Self-Attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Masked-Self-Attention"><span class="toc-number">1.1.2.</span> <span class="toc-text">Masked Self-Attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cross-Attention"><span class="toc-number">1.1.3.</span> <span class="toc-text">Cross-Attention</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-number">1.2.</span> <span class="toc-text">Transformer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIT"><span class="toc-number">1.3.</span> <span class="toc-text">VIT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PPO%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">PPO算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPO-in-LLM"><span class="toc-number">1.4.2.</span> <span class="toc-text">PPO in LLM</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MLLM-Pretrain"><span class="toc-number">2.</span> <span class="toc-text">MLLM-Pretrain</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLIP"><span class="toc-number">2.1.</span> <span class="toc-text">CLIP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViLT"><span class="toc-number">2.2.</span> <span class="toc-text">ViLT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ALBEF"><span class="toc-number">2.3.</span> <span class="toc-text">ALBEF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLMo-%E8%BF%99%E4%B8%AA%E7%BB%84%E7%9A%84%E5%B7%A5%E4%BD%9C%E9%9D%9E%E5%B8%B8Solid"><span class="toc-number">2.4.</span> <span class="toc-text">VLMo (这个组的工作非常Solid)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP-%E6%9D%A5%E8%87%AAALBEF%E5%9B%A2%E9%98%9F%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">BLIP(来自ALBEF团队）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP2"><span class="toc-number">2.6.</span> <span class="toc-text">BLIP2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CoCa"><span class="toc-number">2.7.</span> <span class="toc-text">CoCa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BEiT-v3-%E6%9D%A5%E8%87%AAVLMo%E5%9B%A2%E9%98%9F"><span class="toc-number">2.8.</span> <span class="toc-text">BEiT v3 (来自VLMo团队)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-Detection-and-Segmentation"><span class="toc-number">3.</span> <span class="toc-text">Object Detection and Segmentation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DETR"><span class="toc-number">3.1.</span> <span class="toc-text">DETR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2024-DINOv%EF%BC%9AVisual-In-Context-Prompting"><span class="toc-number">3.2.</span> <span class="toc-text">[CVPR 2024] DINOv：Visual In-Context Prompting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E6%A6%82%E5%BF%B5"><span class="toc-number">3.2.1.</span> <span class="toc-text">新概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECCV2024-PartGLEE-A-Foundation-Model-for-Recognizing-and-Parsing-Any-Objects"><span class="toc-number">3.3.</span> <span class="toc-text">[ECCV2024] PartGLEE: A Foundation Model for Recognizing and Parsing Any Objects</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E7%BB%86%E7%B2%92%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.1.</span> <span class="toc-text">解决细粒度的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">3.3.2.</span> <span class="toc-text">实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-1-Grounded-SAM-Assembling-Open-World-Models-for-Diverse-Visual-Tasks"><span class="toc-number">3.4.</span> <span class="toc-text">[24.1] Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2025-DINOv2-Meets-Text-A-Unified-Framework-for-Image-and-Pixel-Level-Vision-Language-Alignment"><span class="toc-number">3.5.</span> <span class="toc-text">[CVPR 2025] DINOv2 Meets Text: A Unified Framework for Image- and Pixel-Level Vision-Language Alignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-12-A-Light-Weight-Framework-for-Open-Set-Object-Detection-with-Decoupled-Feature-Alignment-in-Joint-Space"><span class="toc-number">3.6.</span> <span class="toc-text">[24.12] A Light-Weight Framework for Open-Set Object Detection with Decoupled Feature Alignment in Joint Space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-10-SAM-2-Segment-Anything-in-Images-and-Videos"><span class="toc-number">3.7.</span> <span class="toc-text">[24.10] SAM 2: Segment Anything in Images and Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2024-PixelLM-Pixel-Reasoning-with-Large-Multimodal-Model"><span class="toc-number">3.8.</span> <span class="toc-text">[CVPR 2024] PixelLM: Pixel Reasoning with Large Multimodal Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2024-OMG-LLaVA-Bridging-Image-level-Object-level-Pixel-level-Reasoning-and-Understanding"><span class="toc-number">3.9.</span> <span class="toc-text">[CVPR 2024] OMG-LLaVA: Bridging Image-level, Object-level, Pixel-level Reasoning and Understanding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-06-Seg-Zero-Reasoning-Chain-Guided-Segmentation-via-Cognitive-Reinforcement"><span class="toc-number">3.10.</span> <span class="toc-text">[2025.06] Seg-Zero: Reasoning-Chain Guided Segmentation via Cognitive Reinforcement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-04-Pixel-SAIL-Single-Transformer-For-Pixel-Grounded-Understanding"><span class="toc-number">3.11.</span> <span class="toc-text">[2025.04] Pixel-SAIL: Single Transformer For Pixel-Grounded Understanding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-06-Perceive-Anything-Recognize-Explain-Caption-and-Segment-Anything-in-Images-and-Videos"><span class="toc-number">3.12.</span> <span class="toc-text">[2025.06] Perceive Anything: Recognize, Explain, Caption, and Segment Anything in Images and Videos</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Grounding-MLLM"><span class="toc-number">4.</span> <span class="toc-text">Grounding-MLLM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#23-07-KOSMOS-2-Grounding-Multimodel-Large-Language-Models-to-the-World"><span class="toc-number">4.1.</span> <span class="toc-text">[23.07] KOSMOS-2: Grounding Multimodel Large Language Models to the World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-04-Ferret-v2-An-Improved-Baseline-for-Referring-and-Grounding-with-Large-Language-Models"><span class="toc-number">4.2.</span> <span class="toc-text">[24.04] Ferret-v2: An Improved Baseline for Referring and Grounding with Large Language Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECCV-2024-Groma-Localized-Visual-Tokenization-for-Grounding-Multimodal-Large-Language-Models"><span class="toc-number">4.3.</span> <span class="toc-text">[ECCV 2024] Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NIPS-2024-SimVG-A-Simple-Framework-for-Visual-Grounding-with-Decoupled-Multi-modal-Fusion"><span class="toc-number">4.4.</span> <span class="toc-text">[NIPS 2024] SimVG: A Simple Framework for Visual Grounding with Decoupled Multi-modal Fusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ICLR-2025-MLLMs-Know-Where-to-Look-Training-free-Perception-of-Small-Visual-Details-with-Multimodal-LLMs"><span class="toc-number">4.5.</span> <span class="toc-text">[ICLR 2025] MLLMs Know Where to Look: Training-free Perception of Small Visual Details with Multimodal LLMs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ICCV-2025-GroundingSuite-Measuring-Complex-Multi-Granular-Pixel-Grounding"><span class="toc-number">4.6.</span> <span class="toc-text">[ICCV 2025] GroundingSuite: Measuring Complex Multi-Granular Pixel Grounding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2025-LLMDet-Learning-Strong-Open-Vocabulary-Object-Detectors-under-the-Supervision-of-Large-Language-Models"><span class="toc-number">4.7.</span> <span class="toc-text">[CVPR 2025] LLMDet: Learning Strong Open-Vocabulary Object Detectors under the Supervision of Large Language Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2025-ROD-MLLM-Towards-More-Reliable-Object-Detection-in-Multimodal-Large-Language-Models"><span class="toc-number">4.8.</span> <span class="toc-text">[CVPR 2025] ROD-MLLM: Towards More Reliable Object Detection in Multimodal Large Language Models</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Visual-Prompt"><span class="toc-number">5.</span> <span class="toc-text">Visual Prompt</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NIPS-2023-Fine-Grained-Visual-Prompting"><span class="toc-number">5.1.</span> <span class="toc-text">[NIPS 2023] Fine-Grained Visual Prompting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECCV-2024-GPT4RoI-Instruction-Tuning-Large-Language-Model-on-Region-of-Interest"><span class="toc-number">5.2.</span> <span class="toc-text">[ECCV 2024] GPT4RoI: Instruction Tuning Large Language Model on Region-of-Interest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2024-ViP-LLaVA-Making-Large-Multimodal-Models-Understand-Arbitrary-Visual-Prompts"><span class="toc-number">5.3.</span> <span class="toc-text">[CVPR 2024] ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2024-Osprey-Pixel-Understanding-with-Visual-Instruction-Tuning"><span class="toc-number">5.4.</span> <span class="toc-text">[CVPR 2024] Osprey: Pixel Understanding with Visual Instruction Tuning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NIPS-2024-Visual-CoT-Advancing-Multi-Modal-Language-Models-with-a-Comprehensive-Dataset-and-Benchmark-for-Chain-of-Thought-Reasoning"><span class="toc-number">5.5.</span> <span class="toc-text">[NIPS 2024] Visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NIPS-2024-VisionLLM-v2-A-Generalist-Multimodal-Large-Language-Model-for-Hundeds-of-Vision-Language-Tasks"><span class="toc-number">5.6.</span> <span class="toc-text">[NIPS 2024] VisionLLM v2: A Generalist Multimodal Large Language Model for Hundeds of Vision-Language Tasks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-02-Introducing-Visual-Perception-Token-into-Multimodal-Large-Language-Model"><span class="toc-number">5.7.</span> <span class="toc-text">[25.02] Introducing Visual Perception Token into Multimodal Large Language Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-02-Draw-and-Understand-Leveraging-Visual-Prompts-to-Enable-MLLMs-to-Comprehend-What-You-Want"><span class="toc-number">5.8.</span> <span class="toc-text">[25.02] Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-03-ChatRex-Taming-Multimodal-LLM-for-Joint-Perception-and-Understanding"><span class="toc-number">5.9.</span> <span class="toc-text">[25.03] ChatRex: Taming Multimodal LLM for Joint Perception and Understanding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ICCV-2025-Referring-to-Any-Person"><span class="toc-number">5.10.</span> <span class="toc-text">[ICCV 2025] Referring to Any Person</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Other"><span class="toc-number">6.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2025-Task-Preference-Optimization-Improving-Multimodal-Large-Language-Models-with-Vision-Task-Alignment"><span class="toc-number">6.1.</span> <span class="toc-text">[CVPR 2025] Task Preference Optimization: Improving Multimodal Large Language Models with Vision Task Alignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-02-ALIGNVLM-Bridging-Vision-and-Language-Latent-Spaces-for-Multimodal-Understanding"><span class="toc-number">6.2.</span> <span class="toc-text">[25.02] ALIGNVLM: Bridging Vision and Language Latent Spaces for Multimodal Understanding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECCV-2024-Attention-Prompting-on-Image-for-Large-Vision-Language-Models"><span class="toc-number">6.3.</span> <span class="toc-text">[ECCV 2024] Attention Prompting on Image for Large Vision-Language Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECCV2024-FALIP-Visual-Prompt-as-Foveal-Attention-Boosts-CLIP-Zero-Shot-Performance"><span class="toc-number">6.4.</span> <span class="toc-text">[ECCV2024] FALIP: Visual Prompt as Foveal Attention Boosts CLIP Zero-Shot Performance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-06-Revisit-What-You-See-Disclose-Language-Prior-in-Vision-Tokens-for-Efficient-Guided-Decoding-of-LVLMs"><span class="toc-number">6.5.</span> <span class="toc-text">[2025.06] Revisit What You See: Disclose Language Prior in Vision Tokens for Efficient Guided Decoding of LVLMs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVPR-2025-LLaVA-ST-A-Multimodal-Large-Language-Model-for-Fine-Grained-Spatial-Temporal-Understanding"><span class="toc-number">6.6.</span> <span class="toc-text">[CVPR 2025] LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Jerry-s-blog/2025/08/26/8%E6%9C%88%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" title="8月多模态论文阅读">8月多模态论文阅读</a><time datetime="2025-08-26T09:38:59.000Z" title="Created 2025-08-26 17:38:59">2025-08-26</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Jerry</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/Jerry-s-blog/js/utils.js"></script><script src="/Jerry-s-blog/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
